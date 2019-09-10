@@ -33,6 +33,6 @@ def hash_with_sha256(str):
 def concatinate(possComb, saltValue):
     return saltValue + possComb#combines the usersPassWord with all possible combination
 s = ""
-n = 3
+n = 3#start with 3 as a default test case
 file_reader()
 #call File_Reader()
