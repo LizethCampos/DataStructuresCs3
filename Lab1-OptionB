@@ -1,0 +1,38 @@
+import hashlib        
+def file_reader():
+    for line in open("password.txt","r"):       # reading file and spliting the txt file
+        columns = line.split(",")               # into columns
+        hash_pass = (columns[2])#gets all the HashPassword from column 2
+        #print(hash_pass)
+        saltValue = (columns[1])#gets all the UserPassword from columns 1
+       # print(saltValue)
+        #call the generator method
+        random_generator(s,n,saltValue,hash_pass)
+def random_generator(start,end,salt,hashU):              # possible outcomes ranging from 0-9
+    if len(start) == end:                                 #length from 3-7
+        return start
+    for i in range(0,10):    
+       all_poss = (random_generator(start + str(i),end,salt,hashU)) # creating all possible passwords
+       combine = concatinate(all_poss,salt)#cobined the pass generated and the salt value
+       hashing = hash_with_sha256(combine) #hashing the combined pass
+       boolean = Password_check(hashing, hashU)
+       print(boolean)
+    return random_generator(start + str(i),end,salt,hashU)
+       
+# the password matches if it return true
+def Password_check(HashPassword,HashUser):
+    if HashPassword == HashUser:
+        return True
+    return False
+    
+def hash_with_sha256(str):
+    hash_object = hashlib.sha256(str.encode('utf-8'))#Generate a hashPassWord
+    hex_dig = hash_object.hexdigest()
+    return hex_dig
+
+def concatinate(possComb, saltValue):
+    return saltValue + possComb#combines the usersPassWord with all possible combination
+s = ""
+n = 3
+file_reader()
+#call File_Reader()
