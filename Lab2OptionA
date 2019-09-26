@@ -1,0 +1,67 @@
+'''
+Author: Isaac Campos
+Class: Cs 2302
+Date 9-25-19
+Instructor:diego aguirre
+TA: Gerardo Barraza
+
+'''
+class Node(object):
+   item = -1
+   next = None
+
+   def __init__(self, item, next = None): 
+       self.item = item
+       self.next = next   
+       def get_item(self):
+           return self.item      
+       def get_next(self):      
+           return self.next            
+       def set_next(self, Val):
+          self.next = Val
+class Linked_list:
+    def __init__(self,head = None):
+        self.head = head  
+    def insertN(self,item):     
+        newN = Node(item)
+        if self.head == None:
+            self.head = newN
+            return
+        tempH = self.head
+        while(tempH.next):
+            tempH = tempH.next
+        tempH.next = newN
+        #return self.head
+    def BubbleSort(self):
+        curr = self.head
+        if curr is None:
+            return
+        else:
+            while curr.getnext() is not None:
+                if curr.getData() > curr.next.getData():
+                     holdData = curr.get_item()
+                     curr.item = curr.next.item
+                     curr.next.item = holdData
+                     
+    def MergeSort(self):
+        tmp = self.head
+        if head is None:
+            return
+        middle = getMiddle(head)
+        Nmiddle = middle.next
+        left_side = MergeSort(head)
+        right_side = MergeSort(Nmiddle)
+        list = MergeSort(left_side,right_side)
+        return list
+    
+    def MiddlePoint(head):
+        if head is Nonde:
+            return head
+        tmp = self.head
+        temp = self.head
+        while(temp.next):
+            tmp = tmp.next
+            temp = tmp.next.next
+            return tmp
+        
+    def printN(s
