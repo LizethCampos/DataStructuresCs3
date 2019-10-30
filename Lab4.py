@@ -3,14 +3,14 @@ class Node(object):
         self.keys = keys
         self.children = children
         self.isleaf = isleaf
-        if max_keys < 3:  # max_num_keys must be odd and greater or equal to 3
+        if max_keys < 3:  
             max_mkeys = 3
-        if max_keys % 2 == 0:  # max_num_keys must be odd and greater or equal to 3
+        if max_keys % 2 == 0: 
             max_keys += 1
         self.max_keys = max_keys
 
   def is_full(self):
-      return len(self.keys) >= self.max_num_keys
+      return len(self.keys) >= self.max_keys
 class B_Trees:
     def __init__(self, root=None):
         self.root = root
@@ -21,23 +21,23 @@ class B_Trees:
             if key < node.keys[i]:
                 return i
         return len(node.key)    
-    def BTsearch(self,node,key):
+    def search(self,node,key):
         if node is None:
             node = self.root
         if key in node.keys:
             return node
         if node.isleaft:
             return None
-        return self.BTreeSplit(key,node.children[self.find])    
-    def BTreeSplit(self,node):
+        return self.Split(key,node.children[self.find])    
+    def Split(self,node):
         if node is None:
             node = self.root
-        middle = node.maxnumkeys//2
+        middle = node.max_keys//2
         if node.isleaf:
-            leftC = Node(node.keys[:middle],maxnumkeys = node.maxnumkeys)
-            rigthC = Node(node.keys[middle + 1:],maxnumkeys = node.maxnumkeys)
+            leftC = Node(node.keys[:middle],max_keys = node.max_keys)
+            rigthC = Node(node.keys[middle + 1:],max_keys = node.max_keys)
         else:
-            leftC = Node(node.keys[:middle],node.children[:middle + 1],node.isleaft,maxnumkeys = node.maxnumkeys)
-            rigthC = Node(node.keys[middle + 1:],node.keys[middle + 1:],maxnumkeys = node.maxnumkeys)
+            leftC = Node(node.keys[:middle],node.children[:middle + 1],node.isleaft,maxnumkeys = node.max_keys)
+            rigthC = Node(node.keys[middle + 1:],node.keys[middle + 1:],maxnumkeys = node.max_keys)
         return node.keys[middle], leftC, rigthC   
 
