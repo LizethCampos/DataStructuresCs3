@@ -26,7 +26,7 @@ class B_Trees:
             node = self.root
         if key in node.keys:
             return node
-        if node.isleaft:
+        if node.isleaf:
             return None
         return self.Split(key,node.children[self.find])    
     def Split(self,node):
@@ -34,10 +34,10 @@ class B_Trees:
             node = self.root
         middle = node.max_keys//2
         if node.isleaf:
-            leftC = Node(node.keys[:middle],max_keys = node.max_keys)
-            rigthC = Node(node.keys[middle + 1:],max_keys = node.max_keys)
+            left = Node(node.keys[:middle],max_keys = node.max_keys)
+            rigth = Node(node.keys[middle + 1:],max_keys = node.max_keys)
         else:
-            leftC = Node(node.keys[:middle],node.children[:middle + 1],node.isleaft,maxnumkeys = node.max_keys)
-            rigthC = Node(node.keys[middle + 1:],node.keys[middle + 1:],maxnumkeys = node.max_keys)
-        return node.keys[middle], leftC, rigthC   
+            left = Node(node.keys[:middle],node.children[:middle + 1],node.isleaf,maxnumkeys = node.max_keys)
+            rigth = Node(node.keys[middle + 1:],node.keys[middle + 1:],max_keys = node.max_keys)
+        return node.keys[middle], left, rigth   
 
