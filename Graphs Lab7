@@ -1,0 +1,79 @@
+class Edge:
+    def __init__(self, source, dest, weight=1):
+        self.source = source
+        self.dest = dest
+        self.weight = weight
+
+
+class Node:
+    # Constructor
+    def __init__(self, vertices, weighted=False, directed=False):
+        self.al = [[] for i in range(vertices)]
+        self.weighted = weighted
+        self.directed = directed
+        self.representation = 'AL' 
+ 
+ 
+ def contains_cyle(self):  # Asumption: Directed Graph
+        dsf = DisjointSetForest(self.num_vertices())
+
+        for i in range(len(self.am)):
+            for j in range(len(self.am)):
+                if self.am[i][j] != 0:
+                    if dsf.find(i) == dsf.find(j):
+                        return True
+
+                    dsf.union(i, j)
+
+        return False
+
+
+def display(self):
+        print('[', end='')
+        for i in range(len(self.am)):
+        
+            print('[', end='')
+            for j in range(len(self.am[i])):
+            
+                edge = self.am[i][j]
+                
+                if edge != 0:
+                
+                    print('(' + str(j) + ',' + str(edge) + ')', end='')
+            print(']', end=' ')
+        print(']')
+
+ def is_valid_vertex(self, u):
+        return 0 <= u < len(self.am)
+        
+ def vertices_reachable_from(self, src):
+        reachable_vertices = set()
+
+        for i in range(len(self.am)):
+            if self.am[src][i] != 0:
+                reachable_vertices.add(i)
+
+        return reachable_vertices
+        
+  def insert(self, source, dest, weight=1):
+        if not self.is_valid_vertex(source) or not self.is_valid_vertex(dest):
+            print('out of range')
+            
+        elif weight != 1 and not self.weighted:
+            print('inserting weighted edge to unweighted graph?')
+            
+        else:
+            self.al[source].append(Edge(source, dest, weight))
+            
+            if not self.directed:
+                self.al[dest].append(Edge(dest, source, weight))
+def compute_indegree(self):
+        ind = [0] * self.num_vertices()
+        
+        for i in range(len(self.al)):
+            for edge in self.al[i]:
+            
+                if edge.weight == i:
+                    ind[i] += 1
+
+        return ind
