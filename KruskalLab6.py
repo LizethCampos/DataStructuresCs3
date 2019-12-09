@@ -1,6 +1,6 @@
 class Kruskal:
-    def ___init___(self,vertices2):#ver--->vertices 
-        self.vertices = vertices2
+    def ___init___(self,ver): 
+        self.vertices = ver
         self.graph = []
     def Krustal_(self):
         list = [] 
