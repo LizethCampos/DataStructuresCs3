@@ -1,11 +1,3 @@
-'''
-Author: Isaac Campos
-Class: Cs 2302
-Date 9-25-19
-Instructor:diego aguirre
-TA: Gerardo Barraza
-
-'''
 class Node(object):
    item = -1
    next = None
